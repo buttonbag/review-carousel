@@ -49,7 +49,7 @@ const nextBtn = document.querySelector('.next-btn');
 const randomBtn = document.querySelector('.random-btn');
 
 //set starting item
-let currItem = 0;
+let currItem = 1;
 
 // load initial item
 window.addEventListener('DOMContentLoaded', () => showPerson(currItem));
@@ -62,3 +62,22 @@ const showPerson = (person) => {
   job.textContent = item.job;
   info.textContent = item.text;
 }
+
+// show next person
+nextBtn.addEventListener('click', () => {
+  currItem++;
+  if (currItem > reviews.length - 1) {
+    currItem = 0;
+  }
+  showPerson(currItem);
+});
+
+// show prev person
+prevBtn.addEventListener('click', () => {
+  currItem--;
+  if (currItem < 0) {
+    currItem = reviews.length - 1;
+  }
+  showPerson(currItem);
+  console.log(currItem);
+});
